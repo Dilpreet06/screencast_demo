@@ -31,8 +31,9 @@ jobs:
       - name: Deploy to staging
         run: |
           echo "Deploying to staging cluster: $CLUSTER_NAME"
-          docker pull myregistry/data-processor:${{ github.sha }}
+          echo "Simulating deployment of image: data-processor:${{ github.sha }}"
           echo "Image deployed to staging environment"
+
   deploy-production:
     needs: deploy-staging
     if: github.event.inputs.environment == 'production'
@@ -56,8 +57,9 @@ jobs:
         run: |
           echo "CLUSTER_NAME=data-prod-cluster" >> $GITHUB_ENV
           echo "NAMESPACE=data-production" >> $GITHUB_ENV
-          docker pull myregistry/data-processor:${{ github.sha }}
+          echo "Simulating deployment of image: data-processor:${{ github.sha }}"
           echo "Deployed to production: $CLUSTER_NAME/$NAMESPACE"
+
 
       - name: Post-deployment validation
         run: |
