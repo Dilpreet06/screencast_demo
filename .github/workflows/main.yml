@@ -1,5 +1,5 @@
 
-name: Data Pipeline CI
+name: Data Pipeline CI Demo
 
 on:
   push:
